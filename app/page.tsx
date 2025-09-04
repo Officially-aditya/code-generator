@@ -1,0 +1,15 @@
+import Header from "@/components/header";
+import MainContent from "@/components/main-content";
+import { Navbar } from "@/components/navbar";
+
+
+export default function Home() {
+
+  return (
+
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <MainContent />
+        </div>
+  );
+}
