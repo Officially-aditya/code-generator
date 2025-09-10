@@ -14,7 +14,7 @@ export const Navbar = () => {
                         <Link href="/" className="flex items-center gap-2">
                             <h1>Vibe</h1>
                         </Link>
-                        <div className="flex gap-2" size="sm">
+                        <div className="flex gap-2">
                             <SignUpButton>
                                 <Button>Sign up</Button>
                             </SignUpButton>
