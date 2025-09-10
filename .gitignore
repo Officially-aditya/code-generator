@@ -25,3 +25,5 @@ dist-ssr
 *.sw?
 
 /lib/generated/prisma
+
+/lib/generated/prisma
