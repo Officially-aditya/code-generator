@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react";
 import { useTRPC } from "@/trpc/client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Input } from "./ui/input";
@@ -6,6 +9,7 @@ import { toast } from "sonner";
 
 
 const Page = () => {
+    const [value, setValue] = useState("");
     const trpc = useTRPC();
     const { data: messages } = useQuery(trpc.messages.getMany.queryOptions())
     const createMessage = useMutation(trpc.messages.create.mutationOptions({

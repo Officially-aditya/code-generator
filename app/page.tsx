@@ -11,6 +11,7 @@ export default function Home() {
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <MainContent />
+          <Test />
         </div>
   );
 }
