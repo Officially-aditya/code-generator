@@ -81,7 +81,7 @@ export const ProjectView = ({ projectId }: Props) => {
                         )}
                         </TabsContent>
                     </Tabs>
-                    </ResizablePanel>
+                </ResizablePanel>
             </ResizablePanelGroup>
         </div>
     )

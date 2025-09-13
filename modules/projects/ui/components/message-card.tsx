@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Fragment, MessageRole, MessageType } from "@/lib/generated/prisma";
 import { cn } from "@/lib/utils";
-import { format } from "date-fns"
+import { format } from "date-fns";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
+import Image from "next/image";
 
 interface UserMessageProps {
     content: string;
@@ -29,13 +29,11 @@ const FragmentCard = ({
     onFragmentClick,
 }: FragmentCardProps) => {
     return (
-    <Button
+    <button
       className={cn(
-        "flex items-start text-start gap-2 border rounded-lg w-fit p-3",
-        "transition-colors",
-        isActiveFragment
-          ? "bg-primary text-primary-foreground"
-          : "bg-muted hover:bg-secondary"
+        "flex items-start text-start gap-2 border rounded-lg bg-muted w-fit p-3 hover:bg-secondary transition-colors",
+        isActiveFragment &&
+        "bg-primary text-primary-foreground border-primary hover:bg-primary"
       )}
       onClick={() => onFragmentClick(fragment)}
     >
@@ -49,7 +47,7 @@ const FragmentCard = ({
         <div className="flex items-center justify-center mt-0.5">
             <ChevronRightIcon className="size-4"/>
         </div>
-    </Button>
+    </button>
     )
 }
 
@@ -67,15 +65,21 @@ const AssistantMessage = ({
             type ==="ERROR" && "text-red-700 dark:text-red-500",
         )}>
             <div className="flex items-center gap-2 pl-2 mb-2">
-                { /*TODO: add logo*/ }
+                <Image
+                    src="/logo.svg"
+                    alt="Lovable Clone"
+                    width={18}
+                    height={18}
+                    className="shrink-0"
+                />
                 <span className="text-sm font-medium">Lovable Clone</span>
                 <span className="text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
                     {format(new Date(createdAt), "HH:mm 'on' MM dd, yyyy")}
                 </span>
             </div>
-            <div className="pl-8 flex flex-col gap-y-4">
+            <div className="pl-8.5 flex flex-col gap-y-4">
                 <span>{content}</span>
-                {fragment && (
+                {fragment && type === "RESULT" && (
                     <FragmentCard
                         fragment={fragment}
                         isActiveFragment={isActiveFragment}
