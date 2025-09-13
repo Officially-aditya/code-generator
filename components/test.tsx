@@ -1,32 +1,31 @@
 "use client"
 
-import { useState } from "react";
-import { useTRPC } from "@/trpc/client";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { toast } from "sonner";
-
+import { ProjectForm } from "@/modules/home/ui/components/project-form";
+import Image from "next/image"
 
 const Page = () => {
-    const [value, setValue] = useState("");
-    const trpc = useTRPC();
-    const { data: messages } = useQuery(trpc.messages.getMany.queryOptions())
-    const createMessage = useMutation(trpc.messages.create.mutationOptions({
-        onSuccess: () => {
-            toast.success("Message created")
-        }
-    }))
-
     return (
-        <div className="p-4 max-w-7xl mx-auto">
-            <Input value={value} onChange={(e) => setValue(e.target.value)} />
-            <Button
-            disabled = {createMessage.isPending}
-            onClick={() => createMessage.mutate({value: value })}
-            >
-                Invoke Background Job
-            </Button>
+        <div className="flex flex-col max-w-5xl mx-auto w-full">
+            <section className="space-y-6 py-[16vh] 2xl:py-48">
+                <div className="flex flex-col items-center">
+                    <Image
+                        src="/logo.svg"
+                        alt="Lovable Clone"
+                        width={50}
+                        height={50}
+                        className="hidden md:block"
+                    />
+                </div>
+                <h1 className="text-2xl md:text-5xl font-bold text-center">
+                    Build Something with Lovable Clone
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground text-center">
+                    Create apps and websites by chatting with AI
+                </p>
+                <div className="max-w-3xl mx-auto w-full">
+                    <ProjectForm />
+                </div>
+            </section>
         </div>
     )
 }

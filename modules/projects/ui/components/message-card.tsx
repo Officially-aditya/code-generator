@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Fragment, MessageRole, MessageType } from "@/lib/generated/prisma";
 import { cn } from "@/lib/utils";
@@ -27,13 +28,18 @@ const FragmentCard = ({
     isActiveFragment,
     onFragmentClick,
 }: FragmentCardProps) => {
-    <button
-    className={cn(
-        "flex items-start text-start gap-2 border rounded-lg bg-muted w-fit p-3 hover:bg-secondary",
-    )}
-    onClick={() => onFragmentClick(fragment)}
+    return (
+    <Button
+      className={cn(
+        "flex items-start text-start gap-2 border rounded-lg w-fit p-3",
+        "transition-colors",
+        isActiveFragment
+          ? "bg-primary text-primary-foreground"
+          : "bg-muted hover:bg-secondary"
+      )}
+      onClick={() => onFragmentClick(fragment)}
     >
-        <Code2Icon className="sizee-4 mt-0.5" />
+        <Code2Icon className="size-4 mt-0.5" />
         <div className="flex flex-col flex-1">
             <span className="text-sm font-medium line-clamp-1">
                 {fragment.title}
@@ -43,7 +49,8 @@ const FragmentCard = ({
         <div className="flex items-center justify-center mt-0.5">
             <ChevronRightIcon className="size-4"/>
         </div>
-    </button>
+    </Button>
+    )
 }
 
 const AssistantMessage = ({
@@ -63,11 +70,18 @@ const AssistantMessage = ({
                 { /*TODO: add logo*/ }
                 <span className="text-sm font-medium">Lovable Clone</span>
                 <span className="text-xs text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
-                    {format(createdAt, "HH:mm 'on' MM dd, yyyy")}
+                    {format(new Date(createdAt), "HH:mm 'on' MM dd, yyyy")}
                 </span>
             </div>
-            <div className="pl-8.5 flex flex-col gap-y-4">
+            <div className="pl-8 flex flex-col gap-y-4">
                 <span>{content}</span>
+                {fragment && (
+                    <FragmentCard
+                        fragment={fragment}
+                        isActiveFragment={isActiveFragment}
+                        onFragmentClick={onFragmentClick}
+                    />
+                )}
             </div>
         </div>
     )
@@ -114,7 +128,5 @@ export const MessageCard = ({
             />
         )
     }
-    return (
-        <UserMessage content={content} />
-    )
+    return <UserMessage content={content} />;
 }

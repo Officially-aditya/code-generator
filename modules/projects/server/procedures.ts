@@ -35,7 +35,6 @@ export const projectsRouter = createTRPCRouter ({
     .input(
         z.object({
             value: z.string().min(1, {message: "Value is required" }).max(1000, { message: "Value is too long" }),
-            projectId: z.string().min(1, { message: "Project ID is required" }),
         })
     )
     .mutation(async ({ input }) => {

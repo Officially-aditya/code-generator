@@ -719,6 +719,9 @@ video {
 .top-full {
   top: 100%;
 }
+.-z-10 {
+  z-index: -10;
+}
 .z-10 {
   z-index: 10;
 }
@@ -897,6 +900,9 @@ video {
 }
 .max-h-\[95vh\] {
   max-height: 95vh;
+}
+.max-h-screen {
+  max-height: 100vh;
 }
 .min-h-0 {
   min-height: 0px;
@@ -1333,6 +1339,9 @@ video {
 .bg-transparent {
   background-color: transparent;
 }
+.bg-\[radial-gradient\(\#dadde2_1px\2c transparent_1px\)\] {
+  background-image: radial-gradient(#dadde2 1px,transparent 1px);
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1410,6 +1419,10 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.py-\[16vh\] {
+  padding-top: 16vh;
+  padding-bottom: 16vh;
 }
 .pb-2 {
   padding-bottom: 0.5rem;
@@ -1634,6 +1647,11 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.transition-\[margin\2c opacity\] {
+  transition-property: margin,opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .transition-\[width\2c height\2c padding\] {
   transition-property: width,height,padding;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1661,11 +1679,6 @@ video {
 }
 .transition-transform {
   transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.transition-\[margin\2c opacity\] {
-  transition-property: margin,opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1718,6 +1731,9 @@ video {
 }
 .running {
   animation-play-state: running;
+}
+.\[background-size\:16px_16px\] {
+  background-size: 16px 16px;
 }
 
 /* Vibe Design System - Modern AI Platform Interface */
@@ -2021,6 +2037,10 @@ video {
   background-color: hsl(var(--sidebar-accent));
 }
 
+.data-\[active\=true\]\:bg-transparent[data-active="true"] {
+  background-color: transparent;
+}
+
 .data-\[state\=active\]\:bg-background[data-state="active"] {
   background-color: hsl(var(--background));
 }
@@ -2031,10 +2051,6 @@ video {
 
 .data-\[state\=open\]\:bg-secondary[data-state="open"] {
   background-color: hsl(var(--secondary));
-}
-
-.data-\[active\=true\]\:bg-transparent[data-active="true"] {
-  background-color: transparent;
 }
 
 .data-\[active\=true\]\:font-medium[data-active="true"] {
@@ -2353,6 +2369,10 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.dark\:bg-\[radial-gradient\(\#393e4a_1px\2c transparent_1px\)\]:is(.dark *) {
+  background-image: radial-gradient(#393e4a 1px,transparent 1px);
+}
+
 @media (min-width: 640px) {
 
   .sm\:block {
@@ -2441,9 +2461,19 @@ video {
     line-height: 2rem;
   }
 
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .md\:opacity-0 {
@@ -2497,6 +2527,11 @@ video {
 }
 
 @media (min-width: 1536px) {
+
+  .\32xl\:py-48 {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
 
   .\32xl\:pt-48 {
     padding-top: 12rem;
